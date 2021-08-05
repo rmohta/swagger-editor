@@ -93,8 +93,22 @@ export default class Topbar extends React.Component {
     let url = prompt("Enter the URL to import from:")
 
     if(url) {
+       fetch(url, {
+        //mode: "no-cors", // no-cors, *cors, same-origin
+        cache: 'no-cache',
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        },
+      })
+        .then(res => res.text())
+        .then(text => console.log("Imported Text:"+text))
+      
       fetch(url, {
-        mode: "no-cors", // no-cors, *cors, same-origin
+        //mode: "no-cors", // no-cors, *cors, same-origin
+        cache: 'no-cache',
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        },
       })
         .then(res => res.text())
         .then(text => {

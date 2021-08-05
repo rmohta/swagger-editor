@@ -93,7 +93,9 @@ export default class Topbar extends React.Component {
     let url = prompt("Enter the URL to import from:")
 
     if(url) {
-      fetch(url)
+      fetch(url, {
+        mode: "no-cors", // no-cors, *cors, same-origin
+      })
         .then(res => res.text())
         .then(text => {
           this.props.specActions.updateSpec(
